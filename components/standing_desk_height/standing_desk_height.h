@@ -8,36 +8,39 @@
 #include "jarvis_decoder.h"
 #include "uplift_decoder.h"
 #include "omnidesk_decoder.h"
+#include "logicdata_decoder.h"
 
 #include "decoder_variant.h"
 
-namespace esphome {
-namespace standing_desk_height {
-
-class StandingDeskHeightSensor : public PollingComponent, public uart::UARTDevice, public sensor::Sensor
+namespace esphome
 {
-public:
-  void set_decoder_variant(DecoderVariant decoder_variant);
-  void start_decoder_detection();
+  namespace standing_desk_height
+  {
 
-  void setup() override;
-  void loop() override;
-  void update() override;
-  void dump_config() override;
-  float get_last_read();
+    class StandingDeskHeightSensor : public PollingComponent, public uart::UARTDevice, public sensor::Sensor
+    {
+    public:
+      void set_decoder_variant(DecoderVariant decoder_variant);
+      void start_decoder_detection();
 
-protected:
-  Decoder* decoder;
-  DecoderVariant decoder_variant = DECODER_VARIANT_UNKNOWN;
+      void setup() override;
+      void loop() override;
+      void update() override;
+      void dump_config() override;
+      float get_last_read();
 
-  float last_read = -1;
-  float last_published = -1;
+    protected:
+      Decoder *decoder;
+      DecoderVariant decoder_variant = DECODER_VARIANT_UNKNOWN;
 
-  bool is_detecting = false;
-  uint32_t started_detecting_at = 0;
+      float last_read = -1;
+      float last_published = -1;
 
-  void try_next_decoder();
-};
+      bool is_detecting = false;
+      uint32_t started_detecting_at = 0;
 
-}
+      void try_next_decoder();
+    };
+
+  }
 }
