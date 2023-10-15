@@ -20,7 +20,7 @@ sensor:
     unit_of_measurement: ${standing_desk_height_units}
     variant: ${standing_desk_variant}
     filters:
-    - throttle: 0.2s
+    - throttle: 0.25s
 
 output:
   - platform: gpio
