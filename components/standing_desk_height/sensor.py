@@ -42,7 +42,7 @@ CONFIG_SCHEMA = (
         cv.GenerateID(): cv.declare_id(StandingDeskHeightSensor),
         cv.Optional(CONF_VARIANT): cv.enum(DECODER_VARIANTS, lower=True, space="_"),
     })
-    .extend(cv.polling_component_schema("500ms"))
+    .extend(cv.polling_component_schema("200ms"))
     .extend(uart.UART_DEVICE_SCHEMA)
 )
 
