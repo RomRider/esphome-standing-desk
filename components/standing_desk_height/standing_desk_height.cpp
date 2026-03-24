@@ -88,7 +88,7 @@ namespace esphome
 
     void StandingDeskHeightSensor::loop()
     {
-      while (this->available() > 0)
+      while (this->available())
       {
         uint8_t byte;
         this->read_byte(&byte);
