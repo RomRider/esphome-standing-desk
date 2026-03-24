@@ -93,12 +93,12 @@ namespace esphome
         uint8_t byte;
         this->read_byte(&byte);
 
-        ESP_LOGVV(TAG, "Reading byte: %d", byte);
+        ESP_LOGD(TAG, "Reading byte: %d", byte);
 
         if (this->decoder != nullptr && this->decoder->put(byte))
         {
           float height = this->decoder->decode();
-          ESP_LOGVV(TAG, "Got desk height: %f", height);
+          ESP_LOGD(TAG, "Got desk height: %f", height);
           this->last_read = height;
         }
       }
